@@ -9,7 +9,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from .models import ZombieSIR
 from .models import ZombieSEIR
 from .models import Haven
-import cStringIO
+from io import BytesIO
 
 
 try:
@@ -207,7 +207,7 @@ def plot(request):
         canvas = plot_sir(beta, gamma)
 
     # write image data to a string buffer and get the PNG image bytes
-    buf = cStringIO.StringIO()
+    buf = BytesIO()
     canvas.print_png(buf)
     data = buf.getvalue()
 
